@@ -1,8 +1,12 @@
 package com.recipe.recipe.controllers;
 
+import com.recipe.recipe.model.Ingredient;
 import com.recipe.recipe.model.Recipe;
 import com.recipe.recipe.service.RecipeService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/recipe")
@@ -17,7 +21,19 @@ public class RecipeController {
     return recipeService.add(recipe);
     }
     @GetMapping("/{id}")
-    public Recipe get(@PathVariable long id) {
-        return recipeService.get(id);
+    public ResponseEntity<Recipe> get(@PathVariable long id) {
+        return ResponseEntity.of(recipeService.get(id));
+    }
+
+    @PutMapping("/id")
+    public ResponseEntity<Recipe>  update(@PathVariable long id, @RequestBody Recipe ingredient) {
+        return ResponseEntity.of(recipeService.get(id));    }
+    @DeleteMapping("/id")
+    public ResponseEntity<Recipe> delete(@PathVariable long id, @RequestBody Recipe ingredient) {
+        return ResponseEntity.of(recipeService.delete(id));
+    }
+    @GetMapping
+    public Map<Long,Recipe> getAll() {
+        return recipeService.getAll();
     }
 }
