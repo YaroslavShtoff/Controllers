@@ -16,6 +16,7 @@ public class IngredientService {
         ingredients.put(idGenerator++, ingredient);
         return ingredient;
     }
+
     public Optional<Ingredient> get(long id) {
         return Optional.ofNullable(ingredients.get(id));
     }
@@ -29,6 +30,6 @@ public class IngredientService {
     }
 
     public Map<Long, Ingredient> getAll() {
-        return new HashMap<>(ingredients);
+        return ingredients;
     }
 }

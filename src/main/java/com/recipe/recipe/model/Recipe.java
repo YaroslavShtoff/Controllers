@@ -1,6 +1,7 @@
 package com.recipe.recipe.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Recipe {
     private String title;
@@ -49,5 +50,21 @@ public class Recipe {
 
     public void setSteps(List<String> steps) {
         this.steps = steps;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return cookingTime == recipe.cookingTime &&
+                Objects.equals(title, recipe.title) &&
+                Objects.equals(ingredients, recipe.ingredients) &&
+                Objects.equals(steps, recipe.steps);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, cookingTime, ingredients, steps);
     }
 }

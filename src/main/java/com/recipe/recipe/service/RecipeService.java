@@ -12,11 +12,13 @@ import java.util.Optional;
 public class RecipeService {
     private final Map<Long, Recipe> recipes = new HashMap<>();
     private long idGenerator = 1;
-    public Recipe add (Recipe recipe) {
+
+    public Recipe add(Recipe recipe) {
         recipes.put(idGenerator++, recipe);
         return recipe;
 
     }
+
     public Optional<Recipe> get(long id) {
         return Optional.ofNullable(recipes.get(id));
     }
@@ -30,6 +32,6 @@ public class RecipeService {
     }
 
     public Map<Long, Recipe> getAll() {
-        return new HashMap<>(recipes);
+        return recipes;
     }
 }

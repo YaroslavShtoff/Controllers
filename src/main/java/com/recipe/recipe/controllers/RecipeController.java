@@ -16,24 +16,29 @@ public class RecipeController {
     public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
-@PostMapping
+
+    @PostMapping
     public Recipe add(@RequestBody Recipe recipe) {
-    return recipeService.add(recipe);
+        return recipeService.add(recipe);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Recipe> get(@PathVariable long id) {
         return ResponseEntity.of(recipeService.get(id));
     }
 
     @PutMapping("/id")
-    public ResponseEntity<Recipe>  update(@PathVariable long id, @RequestBody Recipe ingredient) {
-        return ResponseEntity.of(recipeService.get(id));    }
-    @DeleteMapping("/id")
+    public ResponseEntity<Recipe> update(@PathVariable long id, @RequestBody Recipe ingredient) {
+        return ResponseEntity.of(recipeService.get(id));
+    }
+
+    @DeleteMapping("/{id}")
     public ResponseEntity<Recipe> delete(@PathVariable long id, @RequestBody Recipe ingredient) {
         return ResponseEntity.of(recipeService.delete(id));
     }
+
     @GetMapping
-    public Map<Long,Recipe> getAll() {
+    public Map<Long, Recipe> getAll() {
         return recipeService.getAll();
     }
 }
