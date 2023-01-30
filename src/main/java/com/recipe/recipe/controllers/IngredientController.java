@@ -1,12 +1,12 @@
 package com.recipe.recipe.controllers;
 
 import com.recipe.recipe.model.Ingredient;
-import com.recipe.recipe.model.Recipe;
 import com.recipe.recipe.service.IngredientService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/ingredient")
@@ -28,14 +28,14 @@ public class IngredientController {
         return ResponseEntity.of(ingredientService.get(id));
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public ResponseEntity<Ingredient> update(@PathVariable long id, @RequestBody Ingredient ingredient) {
         return ResponseEntity.of(ingredientService.get(id));
     }
 
-    @DeleteMapping("/id")
-    public ResponseEntity<Ingredient> delete(@PathVariable long id, @RequestBody Ingredient ingredient) {
-        return ResponseEntity.of(ingredientService.delete(id));
+    @DeleteMapping("/{id}")
+    public Optional<Ingredient> delete(long id) {
+        return ingredientService.delete(id);
     }
 
     @GetMapping

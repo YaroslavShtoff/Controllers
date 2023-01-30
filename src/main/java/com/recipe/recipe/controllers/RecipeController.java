@@ -27,18 +27,18 @@ public class RecipeController {
         return ResponseEntity.of(recipeService.get(id));
     }
 
-    @PutMapping("/id")
+    /* @PutMapping("/{id}")
     public ResponseEntity<Recipe> update(@PathVariable long id, @RequestBody Recipe ingredient) {
         return ResponseEntity.of(recipeService.get(id));
     }
 
-    @DeleteMapping("/{id}")
+    //@DeleteMapping("/{id}")
     public ResponseEntity<Recipe> delete(@PathVariable long id, @RequestBody Recipe ingredient) {
         return ResponseEntity.of(recipeService.delete(id));
     }
 
-    @GetMapping
+    //@GetMapping
     public Map<Long, Recipe> getAll() {
         return recipeService.getAll();
-    }
+    }*/
 }
