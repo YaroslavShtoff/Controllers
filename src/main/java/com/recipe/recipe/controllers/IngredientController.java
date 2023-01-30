@@ -28,12 +28,19 @@ public class IngredientController {
         return ResponseEntity.of(ingredientService.get(id));
     }
 
+    @PutMapping("/{id}")
+    public Optional<Ingredient> update(@PathVariable long id) {
+        return ingredientService.get(id);
+    }
 
     @DeleteMapping("/{id}")
     public Ingredient delete(@PathVariable long id) {
         return ingredientService.delete(id);
     }
 
-
+    @GetMapping
+    public Map<Long, Ingredient> getAll() {
+        return ingredientService.getAll();
+    }
 
 }
