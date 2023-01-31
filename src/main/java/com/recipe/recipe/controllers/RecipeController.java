@@ -29,13 +29,13 @@ public class RecipeController {
         return ResponseEntity.of(recipeService.get(id));
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public ResponseEntity<Recipe>  update(@PathVariable long id, @RequestBody Recipe recipe) {
 
         if(validateService.isNotValidate(recipe))
             return ResponseEntity.badRequest().build();
         return ResponseEntity.of(recipeService.get(id));    }
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Recipe> delete(@PathVariable long id) {
         return ResponseEntity.of(recipeService.delete(id));
     }
