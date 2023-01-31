@@ -25,7 +25,7 @@ public class IngredientService {
         return Optional.ofNullable(ingredients.replace(id, ingredient));
     }
 
-    public Ingredient delete(long id) {
+    public Optional<Ingredient> delete(long id) {
         return Optional.ofNullable(ingredients.remove(id));
     }
 

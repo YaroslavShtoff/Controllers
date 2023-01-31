@@ -1,6 +1,5 @@
 package com.recipe.recipe.service;
 
-import com.recipe.recipe.model.Ingredient;
 import com.recipe.recipe.model.Recipe;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,5 @@
 package com.recipe.recipe.controllers;
 
-import com.recipe.recipe.model.Ingredient;
 import com.recipe.recipe.model.Recipe;
 import com.recipe.recipe.service.RecipeService;
 import org.springframework.http.ResponseEntity;
@@ -27,18 +26,18 @@ public class RecipeController {
         return ResponseEntity.of(recipeService.get(id));
     }
 
-    /* @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Recipe> update(@PathVariable long id, @RequestBody Recipe ingredient) {
         return ResponseEntity.of(recipeService.get(id));
     }
 
-    //@DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Recipe> delete(@PathVariable long id, @RequestBody Recipe ingredient) {
         return ResponseEntity.of(recipeService.delete(id));
     }
 
-    //@GetMapping
+    @GetMapping
     public Map<Long, Recipe> getAll() {
         return recipeService.getAll();
-    }*/
+    }
 }
