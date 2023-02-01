@@ -4,23 +4,27 @@ import com.recipe.recipe.model.Ingredient;
 import com.recipe.recipe.model.Recipe;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 @Service
 public class ValidateService {
 
     public boolean isNotValidate(Recipe recipe) {
-        return !StringUtils.isEmpty(recipe.getTitle()) ||
+        boolean result = org.apache.commons.lang3.StringUtils.isBlank(recipe.getTitle()) ||
                 CollectionUtils.isEmpty(recipe.getIngredients()) ||
                 CollectionUtils.isEmpty(recipe.getSteps()) ||
                 recipe.getCookingTime() <= 0;
-
+        if (!result) {
+            for (Ingredient ingredient : recipe.getIngredients()) {
+                result = result || isNotValidate(ingredient);
+            }
+        }
+        return result;
     }
 
     public boolean isNotValidate(Ingredient ingredient) {
-        return StringUtils.isEmpty (ingredient.getTitle()) &&
-                !StringUtils.isEmpty(ingredient.getMeasureUnit()) &&
-                ingredient.getAmount() > 0;
+        return !org.apache.commons.lang3.StringUtils.isBlank(ingredient.getTitle()) ||
+                !org.apache.commons.lang3.StringUtils.isBlank(ingredient.getMeasureUnit()) ||
+                ingredient.getAmount() <= 0;
 
     }
 
